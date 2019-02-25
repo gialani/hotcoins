@@ -1,4 +1,4 @@
-<?php
+<!--<?php
 //creates login page session
     session_start();
     echo isset($_SESSION['login']);
@@ -7,7 +7,7 @@
     }
   
   include("checkUser.php");
-?>
+?>-->
 
 <!DOCTYPE html>
 <html>
@@ -69,7 +69,7 @@ button:hover {
 		<h2>Login</h2>
 	</div>
 	
-	<form method="post" action="login.php">
+	<form method="post">
 		<div class="input-group">
 			<label>Username</label>
             <input type="text" placeholder="Enter Your Username" name="username" required title="Choose Anything">
@@ -79,7 +79,7 @@ button:hover {
             <input type="password" placeholder="Enter Your Password" name="password" required title ="Remember Your Password">
 		</div>
 		<div class="input-group">
-			<button type="submit" class="btn" name="login_user">Login</button>
+			<button type="submit" class="btn" name="login_user">Sign</button>
 		</div>
 		<p>
 			Not yet a member? <a href="newAccount.php">Sign up</a>

@@ -41,34 +41,48 @@ input[type=text], input[type=password],input[type=email] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+	
+}
+/* Set a style for all buttons */
+button {
+    text-align: center;
+    background-color:#ABCBC9 ;
+    color: #008066;
+    padding: 14px 20px;
+    margin: 8px 0;
+    cursor: pointer;
+    width: 300px;
+    font-size: 20px;
+}
+
+button:hover {
+    opacity: .8;
 }
 </style>
  
 </head>
 <body style="background-image:url('Pay.jpg');">
       
-    <h1 style= color:red>New Account</h1>  
+    <h1 style= color:#d9d9d9>New Account</h1>  
 
-<h1 style= color:red>Please Fill Out the Form Below</h1>
+<h1 style= color:#d9d9d9>Please Fill Out the Form Below</h1>
 
 	<form method="post" action="newAccount.php">
 <center>
    User Name:
    <input type="text" name= "username"  placeholder = "Enter your user name" pattern="([A-Za-z]).{2,}" title="Name must be only letters and must be atleast 5 letters" autofocus required>
    <br><br>
-   
    Password:
    <input placeholder="Enter your password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
- <br><br>
+   <br><br>
    Email:
   <input placeholder="Enter email address" type="Email" name="Email Address" pattern="[A-Za-z]{3}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
-<br><br>
+  <br><br>
+  <button type="submit" class="btn" name="reg_user">Register</button>
   
-  <button type="submit" name="reg_user" class="button">Register</button>
- </center>
+</center>
  
 </form>
-
 
 </script>
   </body>
