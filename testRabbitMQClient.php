@@ -28,12 +28,12 @@ if(isset($_SESSION["index"])) {//_btn
 	//check to see if theres a response from rmq server
 	if($response == 1) {
 		//send to main web page???
-		header("Location: home.php");
+		header("Location: checkUser.php");
 	}
 	else{
 		echo("response failure");
 		//then send back to login maybe??
-		header("Location: login.php");
+		header("Location: login.html");
 	}
 }
 if(isset($_SESSION["registration"])){
@@ -46,7 +46,7 @@ if(isset($_SESSION["registration"])){
 	$response = $client->send_request($request);
 	if ($response ==1){
 		//then send back to registration???
-		header("Location: register.php");
+		header("Location: newAccount.php");
         } 
 	header("Location:newAccount.php");
 	
