@@ -1,6 +1,6 @@
 <?php
- include('checkUser.php')
- ?>
+// include('checkUser.php')
+?>
 
 <!DOCTYPE html>
 <html>
@@ -67,7 +67,8 @@ button:hover {
 
 <h1 style= color:#d9d9d9>Please Fill Out the Form Below</h1>
 
-	<form method="post" action="newAccount.php">
+	<form action="testRabbitMQClient.php">
+	<input type= "hidden" name = "type" value = "Signup">
 <center>
    User Name:
    <input type="text" name= "username"  placeholder = "Enter your user name" pattern="([A-Za-z]).{2,}" title="Name must be only letters and must be atleast 5 letters" autofocus required>
@@ -76,7 +77,7 @@ button:hover {
    <input placeholder="Enter your password" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
    <br><br>
    Email:
-  <input placeholder="Enter email address" type="Email" name="Email Address" pattern="[A-Za-z]{3}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required>
+ <input placeholder="Enter email address" type="Email" name="email">
   <br><br>
   <button type="submit" class="btn" name="reg_user">Register</button>
   
