@@ -67,7 +67,8 @@ button:hover {
 
 <h1 style= color:#d9d9d9>Please Fill Out the Form Below</h1>
 
-	<form method="post" action="newAccount.php">
+	<!--<form method="post" action="newAccount.php">-->
+	<form  action="testRabbitMQClient.php" method="post">	
 <center>
    User Name:
    <input type="text" name= "username"  placeholder = "Enter your user name" pattern="([A-Za-z]).{2,}" title="Name must be only letters and must be atleast 5 letters" autofocus required>
