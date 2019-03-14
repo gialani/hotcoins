@@ -1,0 +1,55 @@
+Currency Exchange Database  
+1. User 
+-Name
+- ID
+-username
+-password
+-email
+-current_bal
+-# of exchanges
+
+CREATE TABLE User (
+Name VARCHAR(30),
+User_Id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Username VARCHAR(30),
+Password VARCHAR(30),
+Email VARCHAR(30),
+Current_bal VARCHAR(30),
+Of_Exchanges VARCHAR(30)
+);
+
+INSERT INTO  User (‘Name’,`User_Id`, `Username`, `Password`, `Email`, `Current_bal`, ‘Of_Exchanges’) 
+VALUES
+ ('div ', 'divpatel', 'dpatel@gmail.com', '1', ‘60’),
+ ('max ‘, 'mayurpatel', 'mpatel@gmail.com', '2', ‘120’),
+ ('rj ', 'rajpatel', 'rpatel@gmail.com', '3', ‘180’),
+ ('hd ', 'hetpatel', 'hpatel@gmail.com', '4', ‘240’),
+ ('bj ', 'bansaripatel', 'bpatel@gmail.com', '5', ‘300’);
+
+
+
+
+
+2. Excahnges_User
+-User Id
+-Excahnge Id
+-type of cuurent
+- amount 
+ 
+CREATE TABLE Exchanges_User (
+User_Id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+Exchange_ID VARCHAR(30),
+Current_rat VARCHAR(30),
+Amount VARCHAR(30)
+);
+INSERT INTO `Exchange_User` (`User_ID`, `Exchange_ID`, `Current_rat`, `Amount`) 
+VALUES ('10', '1', '20', '200'),
+ ('20', '2', '30', '300'),
+ ('30', '3', '40', '400'),
+ ('40', '4', '50', '500'),
+ ('50', '5', '60', '600');
+
+
+
+
+
