@@ -111,7 +111,7 @@ Historical Graph of Base <?php echo ($from);?> to <?php echo ($to); ?><br>Dates 
 <a href='graph.php?day=12_months&to=<?=$to;?>'>12 Months</a>
 
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="canvasjs.min.js"></script>
 <a href='graph_curr.php'>Currency Converter</a>
 
 </body>
