@@ -61,7 +61,7 @@ echo $amount . " " . $from . " = " . $conversionResult['result']. " " . $to ."<b
 if ($to != '')
 {
 
-    echo '<a href="graph.php?base='.$to.'">Graph</a>';
+    echo '<a href="graph.php?from='.$from.'&to='.$to.'">Graph</a>';
 }
 
 //print_r ($conversionResult['result']);
