@@ -6,29 +6,15 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
-//include ("account.php");
+include ("functions.php");
 
 
 function doLogin($username,$password)
 {
-	include ("account.php");
-
-		
-	// connect to database
-	ini_set('display_errors','On');
-	error_reporting(E_ERROR|E_WARNING|E_PARSE|E_NOTICE);
-	$db= mysqli_connect ($hostname,$dbusername,$dbpw,$project);
-	if (mysqli_connect_errno())
-	{
-		echo ("Failed To Connect To MySQL:" .mysqli_connect_error());
-		exit();
-	}
-	echo ("Successfully Connected to MySQL.<br><br><br>");
-	mysqli_select_db($db,$project);
-
-
+	
 	//check if user exists
-	$user_check_query = "SELECT * FROM testTable  WHERE username='$username' and password = '$password' LIMIT 1";
+	$db = connectDB();
+	$user_check_query = "SELECT * FROM user  WHERE username='$username' and password = '$password' LIMIT 1";
 	$result = mysqli_query($db, $user_check_query);
 
 	if (mysqli_num_rows($result) > 0) {
@@ -44,22 +30,10 @@ function doLogin($username,$password)
 
 
 function doRegistration($username, $email, $password) {
-	include('account.php');
-
-        // connect to database
-        ini_set('display_errors','On');
-        error_reporting(E_ERROR|E_WARNING|E_PARSE|E_NOTICE);
-        $db= mysqli_connect ($hostname,$dbusername,$dbpw,$project);
-        if (mysqli_connect_errno())
-        {
-                echo ("Failed To Connect To MySQL:" .mysqli_connect_error());
-                exit();
-        }
-        echo ("Successfully Connected to MySQL.<br><br><br>");
-	mysqli_select_db($db,$project);
 	
 	//check if username or email  already exists
-	$s = "SELECT * FROM testTable  WHERE username='$username' or email= '$email';";
+	$db = connectDB();
+	$s = "SELECT * FROM user  WHERE username='$username' or email= '$email';";
 	$result = mysqli_query($db, $s);
 
         if (mysqli_num_rows($result) > 0) {
@@ -69,13 +43,13 @@ function doRegistration($username, $email, $password) {
 
 
 	//add new user
-	$s = "insert into testTable (username, email, password) values ('$username', '$email', '$password')";
+	$s = "insert into user (username, email, password) values ('$username', '$email', '$password')";
         mysqli_query($db, $s) or die (mysqli_error($db));
 
 	if ($s == true) 
 	{
-		echo "New user created successfully.";
-		return true;
+		echo "New user created successfully.";			//displayed to developer
+		return true;		
 	}
 	else
 	{
@@ -89,8 +63,31 @@ function doRegistration($username, $email, $password) {
 
 }
 
+function updateAccount($username, $exchangeid, $currbal)
+{
+	
+	
+	$db = connectDB();
+	//remove exchange 
 
+	$q= "update exchanges set status='I' where exchangeid='$exchangeid'";
+ 	mysqli_query($db, $q) or die (mysqli_error($db));
 
+	//update current balance if remove was successful
+
+	if ($q == true) 
+	{
+		$t= "update user set curr_bal='$currbal' where username='$username'";
+ 		mysqli_query($db, $t) or die (mysqli_error($db));
+		if($t== true){return true;	}else{ return false;}	
+	}
+	else
+	{
+		
+		return false;
+	}
+
+}
 
 function requestProcessor($request)
 {
@@ -106,12 +103,13 @@ function requestProcessor($request)
     case "Login":
 	    if(doLogin($request['username'],$request['password'])){
 		    
-		    $result = array("returnCode" => '1', 'message'=>"Login successful.");
+		    $result = array("returnCode" => "1", 'message'=>"Login successful.");			//displayed to user
+			
 	    }
 
 	    else{
 		   
-		    $result = array("returnCode" => '0', 'message'=>"Wrong credentials.");
+		    $result = array("returnCode" => "0", 'message'=>"Wrong credentials.");			//displayed to user
 	    }
 	    break;
 
@@ -124,9 +122,21 @@ function requestProcessor($request)
 	    }
 	    break;
 
+	case "Trade":
+		$result = array("returnCode" => '3');
+		break;
 
-   // case "validate_session":
-     // return doValidate($request['sessionId']);
+	case "Update":
+		if (updateAccount($request['username'], $request['exchangeid'], $request['currbal'])){
+		    $result = array("returnCode" => '6', 'message' => "Account updated.");
+	    }
+	    else{
+		    $result = array("returnCode" => '3', 'message' => "Account was not updated.");
+	    }
+	    break;
+
+
+  
   }
 
   return $result;
@@ -138,5 +148,5 @@ function requestProcessor($request)
 $server = new rabbitMQServer("testRabbitMQ.ini","testServer");
 $server->process_requests('requestProcessor');
 exit();
-?>
 
+?>
