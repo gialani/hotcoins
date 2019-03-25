@@ -47,7 +47,7 @@ $returnCode = $response["returnCode"];
 
 if($returnCode == 1){
 	$_SESSION["username"] = $request['username'];
-	header('Location: portfolio.php');
+	header('Location: viewportfolio.php');
 	exit();
 	
 }
@@ -61,7 +61,7 @@ if($returnCode == 3){
 
 if($returnCode == 6){
 	
-	header('Location: portfolio.php');
+	header('Location: viewportfolio.php');
 	exit();
 	
 }
