@@ -68,7 +68,7 @@ button:hover {
 <h1 style= color:#d9d9d9>Please Fill Out the Form Below</h1>
 
 	<form action="testRabbitMQClient.php">
-	<input type= "hidden" name = "type" value = "Signup">
+	
 <center>
    User Name:
    <input type="text" name= "username"  placeholder = "Enter your user name" pattern="([A-Za-z]).{2,}" title="Name must be only letters and must be atleast 5 letters" autofocus required>
@@ -79,7 +79,7 @@ button:hover {
    Email:
  <input placeholder="Enter email address" type="Email" name="email">
   <br><br>
-  <button type="submit" class="btn" name="reg_user">Register</button>
+  <button type="submit" class="btn" name="type" value="Signup">Register</button>
   
 </center>
  
