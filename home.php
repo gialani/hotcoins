@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -149,7 +153,10 @@ footer p {
       </li> 
       
       <li class="nav-item">
-          <a class="nav-link" href="portfolio.php">My Portfolio</a>
+	
+          <a class="nav-link" href="viewportfolio.php">My Portfolio</a>
+	
+	
       </li>
       
       
