@@ -25,32 +25,7 @@ background-color: white;
 	text-align: center;
 }
 
-#portfolio{
-	margin: auto;
-}
 
-#portfolio tr{
-	background-color: #ccc;
-	
-}
-
-#portfolio tr:hover{
-	background-color: #fff;
-	
-}
-
-#portfolio th{
-	background-color: #fff;
-	
-}
-
-#portfolio button:hover{
-	cursor: pointer;
-}
-
-#dialog p{
-	color: #000000;
-}
 
 .main {
 margin: 0 auto; 
