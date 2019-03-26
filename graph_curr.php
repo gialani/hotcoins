@@ -77,7 +77,7 @@ if ($to != '')
 </head>
 <body>
 <h1>Currency Converter</h1>
-<form id="myForm" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form id="myForm" action="graph_curr.php" method="post">
  <br>
 <label>From</label>
 <select name="from" id="from">
