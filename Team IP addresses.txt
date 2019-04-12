@@ -1,0 +1,39 @@
+Hotcoins - IP addresses
+
+100
+101
+102
+103--- Gigi Ubuntu 1
+104--- Divyesh Ubuntu 
+105
+106
+107--- Bansari Ubuntu 
+108
+109
+110
+111--- Mayur Ubuntu 
+
+112-116 : RESERVED for HOSTS 
+
+117
+118
+119
+120
+.
+. 	
+200
+
+
+Ubuntu Packages – Commands
+Sudo -s
+Apt-get upgrade
+Apt-get update
+Apt-get install vim
+Apt-get install php
+Apt-get install php-amqp.lib
+Apt-get install aplitude
+Apt-get install rabbitmq-server
+Rabbitmq-plugins enable rabbit_management
+Apt-get install apache2
+Apt-get install mysql-server
+Apt-get install php-mysql
