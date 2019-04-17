@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
 <link href="css/slicknav.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
+inclued 
 <style>
   
   /* Full height */
@@ -16,19 +21,16 @@
   background-repeat: no-repeat;
   background-size: 50% 100%;
 }
-
 *{
     margin: 0; 
     padding: 0;
     font-family: verdana;  
 }
-
 body, html {
   height: 100%;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 * {
   box-sizing: border-box;
 }
@@ -36,7 +38,6 @@ body, html {
 .bg-image {
   /* The image used */
   background-image: url("bjp.JPG");
-
   
   /* Full height */
   height: 100%; 
@@ -46,7 +47,6 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover;
 }  -->
-
 /* Position text in the middle of the page/image */
 .bg-text {
   background-color: rgb(0,0,0); /* Fallback color */
@@ -63,15 +63,11 @@ body, html {
   padding: 20px;
   text-align: center;
 }
-
-
 nav{
     width: 100%;
     height: 80px;
     background-color: lightblue;
 }
-
-
 footer{
    background-color: #424558;
     position: fixed;
@@ -82,14 +78,11 @@ footer{
     text-align: center;
     color: #CCC;
 }
-
 footer p {
     padding: 10.5px;
     margin: 0px;
     line-height: 100%;
 }
-
-
   .image1
 	{
 		position: relative;
@@ -102,13 +95,10 @@ footer p {
 		top: 60px;
 		left: 80px;
 	}
-
-
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -118,12 +108,9 @@ footer p {
   padding: 12px 16px;
   z-index: 1;
 }
-
 .dropdown:hover .dropdown-content {
   display: block;
 }
-
-
 </style>
 
 </head>
@@ -160,22 +147,18 @@ footer p {
       <li class="nav-item submenu dropdown">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
               <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="charts.php" style="color: black">Currency Charts</a></li>
-                  <li class="nav-item"><a class="nav-link" href="historical.php" style="color:black">Historical Currency Rates</a></li>
+                  <li class="nav-item"><a class="nav-link" href="graph_curr.php" style="color: black">Currency Converter</a></li>
+                  <!--li class="nav-item"><a class="nav-link" href="historical.php" style="color:black">Historical Currency Rates</a></li>-->
               </ul>
       </li> 
       
       <li class="nav-item">
-          <a class="nav-link" href="portfolio.php">Portfolio</a>
+	
+          <a class="nav-link" href="viewportfolio.php">My Portfolio</a>
+	
+	
       </li>
       
-      <li class="nav-item">
-          <a class="nav-link" href="account.php">Account</a>
-      </li>
-      
-       <li class="nav-item">
-          <a class="nav-link" href="team.php">About Us</a>
-      </li>
       
      </ul>
   </nav>
@@ -249,25 +232,5 @@ footer p {
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
