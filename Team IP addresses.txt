@@ -2,11 +2,11 @@ Hotcoins - IP addresses
 
 100
 101
-102
-103--- Gigi Ubuntu 1
+102--- Gigi Proxy 
+103--- Gigi Production Server
 104--- Divyesh Ubuntu 
-105
-106
+105--- Gigi QA Server
+106--- Gigi Dev Server
 107--- Bansari Ubuntu 
 108
 109
@@ -19,6 +19,16 @@ Hotcoins - IP addresses
 118
 119
 120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
 .
 . 	
 200
