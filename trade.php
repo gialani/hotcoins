@@ -16,6 +16,10 @@ session_start();
 body {background-color: powderblue;}
 h1   {color: blue;}
 .refreshed{ text-align: center; font-size: 10pt }
+table, th, td {
+  border: 1px solid black;
+background-color: white;
+}
 
 
 #portfolio{
@@ -45,7 +49,7 @@ h1   {color: blue;}
 	color: #000000;
 }
 
-form {
+.main {
 margin: 0 auto; 
 width:80%;
   
@@ -68,7 +72,7 @@ width:80%;
 
 
 <body>
-<form action="tradeform.php" target="_self">
+<div class="main">
 <?php
 
 include("functions.php");
@@ -97,7 +101,22 @@ print $OUT;
 
 $s2 = "select * from exchanges where userID = '$userid' and status= 'A' order by datetime asc";
 $t = mysqli_query ( $db  , $s2)  or die (mysqli_error($db));
+if (mysqli_num_rows($t)== 0 || $t == null) {
+                print "You do not have any exchanges.";
+		
+        }
 
+?>
+
+<form action="viewportfolio.php" target="_self">
+<div><button type="submit">Go back to portfolio</button></div>
+</form>
+<form action="tradeform.php" target="_self">
+<?php 
+if (mysqli_num_rows($t)>1) {
+                
+		
+        
 
 print "<h2>YOUR EXCHANGES</h2>";
 print "<table id='portfolio'>";
@@ -139,14 +158,15 @@ print "<table id='portfolio'>";
 
 
 
-
+/*
 $url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=PTGKM2RE1U6IAGUJ';
 $data = file_get_contents($url);
 $exchangerate = json_decode($data, true);
 $lastupdate = "Last updated: " . $exchangerate['Realtime Currency Exchange Rate']['6. Last Refreshed']. '<br>';
 
 print "<div class = 'refreshed'> $lastupdate </div>";
-
+*/
+}
 ?>
 
 
@@ -154,5 +174,7 @@ print "<div class = 'refreshed'> $lastupdate </div>";
 
 
 </form>
+</div>
+
 </body>
 </html>

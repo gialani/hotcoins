@@ -89,9 +89,13 @@ print $OUT;
 
 
 
+$userid = $_SESSION["userid"];
+print  "userid: $userid";
+
 
 //update the user's exchanges using the most recent rate from API
-$userid = $_SESSION["userid"];
+/*
+
 $s2 = "select * from exchanges where userID = '$userid' ";
 $t = mysqli_query ( $db  , $s2)  or die (mysqli_error($db));
 
@@ -100,14 +104,15 @@ while ( $r = mysqli_fetch_array($t, MYSQLI_ASSOC))
 		$toCurr = $r ["toCurr"];
 		$exchangeID= $r ["exchangeid"];
 		$amount = $r["amount"];
-
+		$exchangedata = "";
 		//convert currency to USD
-		$url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=$toCurr&to_currency=USD&apikey=PTGKM2RE1U6IAGUJ";
+			while($exchangedata ==null || (!array_key_exists('Realtime Currency Exchange Rate', $exchangedata))){
+	$url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=$toCurr&to_currency=USD&apikey=PTGKM2RE1U6IAGUJ";
 		$data = file_get_contents($url);
-		$exchangerate = json_decode($data, true);	
-		$rate = $exchangerate['Realtime Currency Exchange Rate']['5. Exchange Rate'];	
-	
-				
+		$exchangedata = json_decode($data, true);	
+		$rate = $exchangedata['Realtime Currency Exchange Rate']['5. Exchange Rate'];
+			}	
+
 		$currentUSD = $rate * $amount;
 		$s3 = "update exchanges set currentUSD = '$currentUSD', rate ='$rate' where exchangeid = '$exchangeID'; ";
 		mysqli_query ( $db  , $s3)  or die (mysqli_error($db));
@@ -115,7 +120,7 @@ while ( $r = mysqli_fetch_array($t, MYSQLI_ASSOC))
 }
 
 
-
+*/
 
 
 
@@ -126,9 +131,16 @@ while ( $r = mysqli_fetch_array($t, MYSQLI_ASSOC))
 $s2 = "select * from exchanges where userID = '$userid' and status='A' order by datetime asc";
 $t = mysqli_query ( $db  , $s2)  or die (mysqli_error($db));
 
+ if (mysqli_num_rows($t)== 0 || $t == null) {
+                print "You do not have any exchanges.";
+        }		
+else{
+			
+
 
 print "<h2>PORTFOLIO</h2>";
 print "<table id='portfolio'>";
+
 		
 		print "<tr> <th>ExchangeID</th> <th>Datetime</th> <th>Type</th> <th>Amount</th> <th>Current Rate</th> <th>Initial USD</th> <th>Current Value in USD</th> </tr>"; 
   
@@ -176,20 +188,24 @@ print "<table id='portfolio'>";
 		  
 		  }	
   print "</table>";
-
-
+}
+/*
 $url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=PTGKM2RE1U6IAGUJ';
 $data = file_get_contents($url);
 $exchangerate = json_decode($data, true);
-$lastupdate = "Last updated: " . $exchangerate['Realtime Currency Exchange Rate']['6. Last Refreshed']. '<br>';
+
+$lastupdate = "Last updated: " . $exchangedata['Realtime Currency Exchange Rate']['6. Last Refreshed']. '<br>';
 
 print "<div class = 'refreshed'> $lastupdate </div>";
-
+*/
 ?>
 
 <form class = "wrapper" action = "testRabbitMQClient.php" >
-<button type="submit" class="btn" name="type" value="Add">Add Exchange</button>
+
 <button type="submit" class="btn" name="type" value="Trade">Trade</button>
+</form>
+<form action="addexchange.php" target="_self">
+<button type="submit" class="btn" name="type" value="Add">Add Exchange</button>
 </form>
 
 

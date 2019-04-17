@@ -12,7 +12,10 @@ session_start();
 <style>
 body {background-color: powderblue;}
 h1   {color: blue;}
-
+table, th, td {
+  border: 1px solid black;
+background-color: white;
+}
 
 
 form {
@@ -115,7 +118,7 @@ if( $result <0){
 }else{
 	print "You will make $$result!";
 }
-
+print "<br>The exchange fee is \$1.99.<br>";
 print "<br>Your new balance in USD will be: $$newbal.<br>";
 
 $_SESSION["newbal"]= $newbal;

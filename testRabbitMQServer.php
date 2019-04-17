@@ -1,7 +1,6 @@
 #!/usr/bin/php
 <?php
-//require_once __DIR__.'vendor/autoload.php';
-
+session_start();
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
@@ -43,7 +42,7 @@ function doRegistration($username, $email, $password) {
 
 
 	//add new user
-	$s = "insert into user (username, email, password) values ('$username', '$email', '$password')";
+	$s = "insert into user (username, email, password, curr_bal) values ('$username', '$email', '$password', '100.00')";
         mysqli_query($db, $s) or die (mysqli_error($db));
 
 	if ($s == true) 
@@ -103,35 +102,35 @@ function requestProcessor($request)
     case "Login":
 	    if(doLogin($request['username'],$request['password'])){
 		    
-		    $result = array("returnCode" => "1", 'message'=>"Login successful.");			//displayed to user
+		    $result = array("returnCode" => "1", 'message'=>"Login successful.----");			//displayed to user
 			
 	    }
 
 	    else{
 		   
-		    $result = array("returnCode" => "0", 'message'=>"Wrong credentials.");			//displayed to user
+		    $result = array("returnCode" => "0", 'message'=>"Wrong credentials.-----");			//displayed to user
 	    }
 	    break;
 
     case "Signup":
 	    if (doRegistration($request['username'], $request['email'], $request['password'])){
-		    $result = array("returnCode" => '1', 'message' => "User created.");
+		    $result = array("returnCode" => "1", 'message' => "User created.-------");
 	    }
 	    else{
-		    $result = array("returnCode" => '0', 'message' => "Signup failed.");
+		    $result = array("returnCode" => "0", 'message' => "Signup failed.------");
 	    }
 	    break;
 
 	case "Trade":
-		$result = array("returnCode" => '3');
+		$result = array("returnCode" => "3");
 		break;
 
 	case "Update":
 		if (updateAccount($request['username'], $request['exchangeid'], $request['currbal'])){
-		    $result = array("returnCode" => '6', 'message' => "Account updated.");
+		    $result = array("returnCode" => '6', 'message' => "Account updated.------");
 	    }
 	    else{
-		    $result = array("returnCode" => '3', 'message' => "Account was not updated.");
+		    $result = array("returnCode" => '3', 'message' => "Account was not updated.-------");
 	    }
 	    break;
 
