@@ -1,7 +1,6 @@
-#!/usr/bin/php 
+
 <?php
 
-//require_once __DIR__.'vendor/autoload.php';
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
@@ -40,8 +39,7 @@ $response = $client->send_request($request);
 echo "client received response: ".PHP_EOL;
 print_r($response);
 //echo $argv[0]." END".PHP_EOL;
-
-var_dump($response);
+//file_put_contents("errorlog.txt", $response, FILE_APPEND);
 echo "<br>Return code: ";
 $returnCode = $response["returnCode"];
 
@@ -66,7 +64,7 @@ if($returnCode == 6){
 	
 }
 
-?>
+
 
 
 
