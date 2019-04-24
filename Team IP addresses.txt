@@ -12,9 +12,11 @@ Hotcoins - IP addresses
 109
 110
 111--- Mayur Ubuntu 
-
-112-116 : RESERVED for HOSTS 
-
+112
+113
+114
+115
+116
 117
 118
 119
@@ -30,6 +32,10 @@ Hotcoins - IP addresses
 129
 130
 .
+.
+140
+.
+.       RESERVED FOR HOST MACHINES
 . 	
 200
 
