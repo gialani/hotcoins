@@ -8,7 +8,7 @@ Hotcoins - IP addresses
 105--- Gigi QA Server
 106--- Gigi Dev Server
 107--- Bansari Ubuntu 
-108
+108--- Gigi hotstandby
 109
 110
 111--- Mayur Ubuntu 
