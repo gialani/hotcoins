@@ -6,18 +6,47 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {background-color: powderblue;}
-h1   {color: blue;}
-p    {color: red;}
 
-table, th, td {
-  border: 1px solid black;
-background-color: white;
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<style>
+body {
+  background-color: white;
 }
 
-.refreshed{ text-align: center; font-size: 10pt }
-.btn{background-color: firebrick; color:white; }
+table, th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid blue;
+  width: 100%; 
+  border-collapse: collapse;
+  overflow-x: scroll;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff1e0;
+}
+
+tr:hover {
+  background-color: #ffd4cc;
+}
+
+.refreshed { 
+  text-align: center; 
+  font-size: 10pt 
+}
+
+.btn:hover {
+  background-color: #f0d9a8; 
+  color: red;
+  border: 2px solid blue}
+}
 
 a:link, a:visited {
   background-color: #f44336;
@@ -28,30 +57,87 @@ a:link, a:visited {
   display: inline-block;
 }
 
-a:hover, a:active {
+a:active {
   background-color: gray;
 }
 
 #portfolio{
-	margin: auto;
+  margin: auto;
+  overflow-x: auto;
 }
 
-#panel {
-margin: 0 auto; 
-width:80%;
-  
-  padding: 20px;
-  border: 1px solid #B0C4DE;
-  background: white;
-  border-radius: 12px;
+h2 {
+  text-align: center;
+  font-family: serif;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 15px;
+  text-align: right;
+}
+
+footer p {
+   padding: 10.5px;
+   margin: 0px;
+   line-height: 100%;
+}
+
+footer{
+   background-color: #424558;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 35px;
+   text-align: center;
+   color: #CCC;
 }
 
 
 </style>
 </head>
 
-<body>
-<div id="panel">
+<body>  
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="home.php">
+     <img src="img/logo.png" alt="Logo" style="width:130px;"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="home.php">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Tools<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="graph.html">Historical Graphs</a></li>
+          <li><a href="graph_curr.php">Currency Converter</a></li>
+        </ul>
+      </li>
+      <li><a href="paypal.php">Payout</a></li>
+      <li><a href="viewportfolio.php">My portfolio</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="logout.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      
+    </ul>
+  </div>
+</nav>
+
+
+
+
+  <footer>
+      <p> &copy; 2019 <a style="color:#0a93a6; text-decoration:none;" href="home.php"> Divyesh Patel, Gialani To, Mayur Dudhat, Bansari Jetani </a>| Privacy Policy | Terms of Use </p>
+  </footer>
+
+
+
+
+
+
+<div id="topnav">
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 ini_set('display_errors' , 1);
@@ -85,16 +171,12 @@ while ( $r = mysqli_fetch_array($t, MYSQLI_ASSOC))
 			$OUT .=  "<br> Your current balance in USD: $$curr_bal.<br>";
 	}
 
-print $OUT;
+print "<h3>$OUT<h3>";
 
 
 
-$userid = $_SESSION["userid"];
-print  "userid: $userid";
-
-
-//update the user's exchanges using the most recent rate from API
 /*
+//update the user's exchanges using the most recent rate 
 
 $s2 = "select * from exchanges where userID = '$userid' ";
 $t = mysqli_query ( $db  , $s2)  or die (mysqli_error($db));
@@ -126,7 +208,7 @@ while ( $r = mysqli_fetch_array($t, MYSQLI_ASSOC))
 
 
 
-
+$userid = $_SESSION["userid"];
 //display all the user's exchanges
 $s2 = "select * from exchanges where userID = '$userid' and status='A' order by datetime asc";
 $t = mysqli_query ( $db  , $s2)  or die (mysqli_error($db));
@@ -138,7 +220,7 @@ else{
 			
 
 
-print "<h2>PORTFOLIO</h2>";
+print "<br><h2>PORTFOLIO</h2>";
 print "<table id='portfolio'>";
 
 		
@@ -188,25 +270,16 @@ print "<table id='portfolio'>";
 		  
 		  }	
   print "</table>";
+
 }
-/*
-$url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=PTGKM2RE1U6IAGUJ';
-$data = file_get_contents($url);
-$exchangerate = json_decode($data, true);
 
-$lastupdate = "Last updated: " . $exchangedata['Realtime Currency Exchange Rate']['6. Last Refreshed']. '<br>';
-
-print "<div class = 'refreshed'> $lastupdate </div>";
-*/
 ?>
 
-<form class = "wrapper" action = "testRabbitMQClient.php" >
 
-<button type="submit" class="btn" name="type" value="Trade">Trade</button>
-</form>
-<form action="addexchange.php" target="_self">
-<button type="submit" class="btn" name="type" value="Add">Add Exchange</button>
-</form>
+
+<button><a href ="trade.php">Trade</a></button>
+
+<button><a href ="AddExchange.php">Add</a></button><br><br><br>
 
 
 

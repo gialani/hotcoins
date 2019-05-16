@@ -6,72 +6,138 @@ session_start();
 <html>
 <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+</head>
+<body>
 
+<style>
 
 
 
 <style>
-body {background-color: powderblue;}
-h1   {color: blue;}
-.refreshed{ text-align: center; font-size: 10pt }
-table, th, td {
-  border: 1px solid black;
-background-color: white;
+
+body {
+  background-color: white;
 }
 
+table, th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid blue;
+  width: 100%; 
+  border-collapse: collapse;
+  overflow-x: scroll;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff1e0;
+}
+
+tr:hover {
+  background-color: #ffd4cc;
+}
+
+.refreshed { 
+  text-align: center; 
+  font-size: 10pt 
+}
+
+.btn:hover {
+  background-color: #f0d9a8; 
+  color: red;
+  border: 2px solid blue}
+}
+
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:active {
+  background-color: gray;
+}
 
 #portfolio{
-	margin: auto;
+  margin: auto;
+  overflow-x: auto;
 }
 
-#portfolio tr{
-	background-color: #ccc;
-	
+h2 {
+  text-align: center;
+  font-family: serif;
+  font-weight: bold;
 }
 
-#portfolio tr:hover{
-	background-color: #fff;
-	
+h3 {
+  font-size: 15px;
+  text-align: right;
 }
 
-#portfolio th{
-	background-color: #fff;
-	
+footer p {
+   padding: 10.5px;
+   margin: 0px;
+   line-height: 100%;
 }
 
-#portfolio button:hover{
-	cursor: pointer;
-}
-
-#dialog p{
-	color: #000000;
-}
-
-.main {
-margin: 0 auto; 
-width:80%;
-  
-  padding: 20px;
-  border: 1px solid #B0C4DE;
-  background: white;
-  border-radius: 12px;
+footer{
+   background-color: #424558;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 35px;
+   text-align: center;
+   color: #CCC;
 }
 
 </style>
 </head>
 
-
-
-
-
-
-
-
-
-
 <body>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="home.php">
+     <img src="img/logo.png" alt="Logo" style="width:130px;"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Tools<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="graph.html">Historical Graphs</a></li>
+          <li><a href="graph_curr.php">Currency Converter</a></li>
+        </ul>
+      </li>
+      <li><a href="paypal.php">Payout</a></li>
+      <li><a href="viewportfolio.php">My portfolio</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="newAccount.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<footer>
+      <p> &copy; 2019 <a style="color:#0a93a6; text-decoration:none;" href="home.php"> Divyesh Patel, Gialani To, Mayur Dudhat, Bansari Jetani </a>| Privacy Policy | Terms of Use </p>
+  </footer>
+
+
+
+
 <div class="main">
 <?php
 
@@ -108,12 +174,12 @@ if (mysqli_num_rows($t)== 0 || $t == null) {
 
 ?>
 
-<form action="viewportfolio.php" target="_self">
-<div><button type="submit">Go back to portfolio</button></div>
+<form action='RabbitMQClient.php' target='_self'>
+<div><button type='submit' name = 'type' value = 'Portfolio'>Go back to portfolio</button></div>
 </form>
 <form action="tradeform.php" target="_self">
 <?php 
-if (mysqli_num_rows($t)>1) {
+if (mysqli_num_rows($t)>0) {
                 
 		
         
@@ -158,14 +224,8 @@ print "<table id='portfolio'>";
 
 
 
-/*
-$url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=JPY&apikey=PTGKM2RE1U6IAGUJ';
-$data = file_get_contents($url);
-$exchangerate = json_decode($data, true);
-$lastupdate = "Last updated: " . $exchangerate['Realtime Currency Exchange Rate']['6. Last Refreshed']. '<br>';
 
-print "<div class = 'refreshed'> $lastupdate </div>";
-*/
+
 }
 ?>
 

@@ -62,7 +62,7 @@ function doRegistration($username, $email, $password) {
 
 }
 
-function updateAccount($username, $exchangeid, $currbal)
+function removeExchange($username, $exchangeid, $currbal)
 {
 	
 	
@@ -88,6 +88,44 @@ function updateAccount($username, $exchangeid, $currbal)
 
 }
 
+
+
+
+function addExchange($request){
+
+	$db = connectDB();
+		
+$userid=$request['userid'];
+$toCurr = $request['toCurr'];
+$amt = $request['toCurrAmt'];	
+$initialUSD = $request['USD'];
+$rate = $request['rate'];
+
+
+$q= "insert into exchanges (userid, toCurr, amount, initialUSD, currentUSD, rate, status) values('$userid', '$toCurr', '$amt', '$initialUSD', '$initialUSD', '$rate', 'A')";
+
+	mysqli_query($db, $q) or die (mysqli_error($db));
+
+	//update current balance if add was successful
+
+	if ($q == true) 
+	{
+		$currbal= $request['currbal'];
+		$currbal = $currbal- $request['USD'];
+		$t= "update user set curr_bal='$currbal' where userid='$userid'";
+		mysqli_query($db, $t) or die (mysqli_error($db));
+		if($t== true){return true;	}else{ return false;}	
+	}
+	else
+	{
+		
+		return false;
+	}
+
+}
+
+
+
 function requestProcessor($request)
 {
 	$result = "";
@@ -101,14 +139,15 @@ function requestProcessor($request)
   {
     case "Login":
 	    if(doLogin($request['username'],$request['password'])){
-		    
-		    $result = array("returnCode" => "1", 'message'=>"Login successful.----");			//displayed to user
+
+		    //displayed to user
+		    $result = array("returnCode" => "1", 'message'=>"Login successful.----");			
 			
 	    }
 
 	    else{
-		   
-		    $result = array("returnCode" => "0", 'message'=>"Wrong credentials.-----");			//displayed to user
+		   //displayed to user
+		    $result = array("returnCode" => "0", 'message'=>"Wrong credentials.-----");			
 	    }
 	    break;
 
@@ -124,10 +163,20 @@ function requestProcessor($request)
 	case "Trade":
 		$result = array("returnCode" => "3");
 		break;
+	case "Portfolio":
+		$result = array("returnCode" => "4");
+		break;
+	case "Add":
+		if(addExchange($request)){
+			$result = array("returnCode" => "4", 'message'=> 'Exchange added');}
+		 else{
+		    $result = array("returnCode" => '3', 'message' => "Exchange was not added.-------");
+	   	 }
+		break;
 
-	case "Update":
-		if (updateAccount($request['username'], $request['exchangeid'], $request['currbal'])){
-		    $result = array("returnCode" => '6', 'message' => "Account updated.------");
+	case "tradeCurrency":
+		if (removeExchange($request['username'], $request['exchangeid'], $request['currbal'])){
+		    $result = array("returnCode" => '4', 'message' => "Account updated.------");
 	    }
 	    else{
 		    $result = array("returnCode" => '3', 'message' => "Account was not updated.-------");
