@@ -70,6 +70,7 @@ button:hover {
 	<form action="testRabbitMQClient.php">
 	
 <center>
+	Each new user is given $100.<br><br>
    User Name:
    <input type="text" name= "username"  placeholder = "Enter your user name" pattern="([A-Za-z]).{2,}" title="Name must be only letters and must be atleast 5 letters" autofocus required>
    <br><br>
