@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: hotcoins
 -- ------------------------------------------------------
--- Server version	5.7.25-0ubuntu0.18.04.2-log
+-- Server version	5.7.25-0ubuntu0.18.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,7 +42,7 @@ CREATE TABLE `exchanges` (
 
 LOCK TABLES `exchanges` WRITE;
 /*!40000 ALTER TABLE `exchanges` DISABLE KEYS */;
-INSERT INTO `exchanges` VALUES (1,1,'eur',100.00,'2019-03-14 01:32:42',125.00,112.36,1.1235955000,'A'),(2,1,'jpy',10000.00,'2019-03-14 01:33:07',110.00,90.43,0.0090428200,'I'),(3,1,'vnd',350000.00,'2019-03-14 01:33:54',7.50,15.09,0.0000431100,'A');
+INSERT INTO `exchanges` VALUES (1,1,'eur',100.00,'2019-03-14 01:32:42',125.00,113.01,1.1300713000,'A'),(2,1,'jpy',10000.00,'2019-03-14 01:33:07',110.00,91.09,0.0091087100,'I'),(3,1,'vnd',350000.00,'2019-03-14 01:33:54',7.50,15.09,0.0000431100,'I');
 /*!40000 ALTER TABLE `exchanges` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `curr_bal` decimal(6,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'testuser','testpw123','test@gmail.com',1196.61),(2,'testuser2','Test123!','test2@gmail.com',2000.00),(3,'testuser3','Test123!','test3@gmail.com',5.00),(4,'it490test','Test12345!','u209@yahoo.com',100.00),(5,'showtest','testpw12393875!S','uk@gmail.com',100.00);
+INSERT INTO `user` VALUES (1,'testuser','testpw123','test@gmail.com',1106.18),(2,'testuser2','Test123!','test2@gmail.com',2000.00),(3,'testuser3','Test123!','test3@gmail.com',5.00);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -82,4 +82,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-24 11:19:18
+-- Dump completed on 2019-03-24 23:49:21

@@ -5,14 +5,54 @@ session_start();
 <!doctype html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link href="css/slicknav.css" rel="stylesheet">
-<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 
-inclued 
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
 <style>
   
+body {
+  background-color: white;
+}
+
+a:link, a:visited {
+  color: white;
+  padding: 14px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:active {
+  background-color: gray;
+}
+
+footer p {
+   padding: 10.5px;
+   margin: 0px;
+   line-height: 100%;
+}
+
+footer{
+   background-color: #424558;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 35px;
+   text-align: center;
+   color: #CCC;
+}
+
+
+<!--
+
   /* Full height */
   height: 100%; 
   
@@ -34,7 +74,7 @@ body, html {
 * {
   box-sizing: border-box;
 }
-<!--
+
 .bg-image {
   /* The image used */
   background-image: url("bjp.JPG");
@@ -46,7 +86,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}  -->
+} 
 /* Position text in the middle of the page/image */
 .bg-text {
   background-color: rgb(0,0,0); /* Fallback color */
@@ -63,11 +103,7 @@ body, html {
   padding: 20px;
   text-align: center;
 }
-nav{
-    width: 100%;
-    height: 80px;
-    background-color: lightblue;
-}
+
 footer{
    background-color: #424558;
     position: fixed;
@@ -89,7 +125,7 @@ footer p {
 		top: 0;
 		left: 0;
 	}
-	.image2
+  .image2
 	{
 		position: absolute;
 		top: 60px;
@@ -111,57 +147,46 @@ footer p {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
+-->
+
+hr{
+  border-width: 2px;
+  display: block;
+  border-style: inset;
+}
+
 </style>
 
 </head>
 <body>  
 
-<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #82cbff;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-     <div class="container-fluid">
-     <div class="row">
-     <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <img src="img/Logo.JPG" alt="Logo" style="width:170px;">
-        </a>
-     </div>
-     </div>
-     </div>
-     </div>
- 
-    <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-          <a class="btn" href="login.html">Sign In</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="home.php">
+     <img src="img/logo.png" alt="Logo" style="width:130px;"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Tools<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="graph.html">Historical Graphs</a></li>
+          <li><a href="graph_curr.php">Currency Converter</a></li>
+        </ul>
       </li>
-    
-      <li class="nav-item">
-          <a class="nav-link" href="home.php">Home</a>
-      </li>
-      
-      <li class="nav-item submenu dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools</a>
-              <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="graph_curr.php" style="color: black">Currency Converter</a></li>
-                  <!--li class="nav-item"><a class="nav-link" href="historical.php" style="color:black">Historical Currency Rates</a></li>-->
-              </ul>
-      </li> 
-      
-      <li class="nav-item">
-	
-          <a class="nav-link" href="viewportfolio.php">My Portfolio</a>
-	
-	
-      </li>
-      
-      
-     </ul>
-  </nav>
+      <li><a href="paypal.php">Payout</a></li>
+      <li><a href="viewportfolio.php">My portfolio</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="newAccount.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>
+
   
   
 
@@ -172,11 +197,11 @@ footer p {
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="img/moneyhome.gif" alt="First slide" width="1700" height="800">
+            <img class="d-block w-100" src="img/home.jpg" alt="First slide" width="1700" height="800">
         </div>
     </div>
     <div class="carousel-caption">
-       <h1>HotCoin</h1>
+       <h1>HotCoins</h1>
     </div>
 </div>
 </div>
@@ -192,30 +217,73 @@ footer p {
           <div class="col-lg-6 order-lg-1">
             <div class="p-5">
               <h2 class="display-4">Introduction</h2>
-              <p>HotCoin is ....Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque sodales ut etiam sit amet nisl purus. Vitae proin sagittis nisl rhoncus mattis. Vitae suscipit tellus mauris a diam maecenas sed. Justo nec ultrices dui sapien eget mi. Nam at lectus urna duis convallis convallis tellus id. Non quam lacus suspendisse faucibus interdum posuere. Malesuada fames ac turpis egestas sed tempus urna.</p>
+              <p>Take advantage of our low exchange rate and start making some money! Don't forget to check our site daily to see rate changes and they affect your portfolio.</p><br><br> <hr noshade> <br><br>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="img/graphhome.gif" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <h2 class="display-4">Graphs</h2>
-              <p>Our graphs show ..... Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- start sw-rss-feed code --> 
+<script type="text/javascript"> 
+
+rssfeed_url = new Array(); 
+rssfeed_url[0]="https://rss.dailyfx.com/feeds/forex_market_news";  
+rssfeed_frame_width="400"; 
+rssfeed_frame_height="300"; 
+rssfeed_scroll="on"; 
+rssfeed_scroll_step="6"; 
+rssfeed_scroll_bar="on"; 
+rssfeed_target="_blank"; 
+rssfeed_font_size="12"; 
+rssfeed_font_face=""; 
+rssfeed_border="on"; 
+rssfeed_css_url=""; 
+rssfeed_title="on"; 
+rssfeed_title_name="Hotcoins Newsfeed"; 
+rssfeed_title_bgcolor="#2a23ff"; 
+rssfeed_title_color="#fff"; 
+rssfeed_title_bgimage=""; 
+rssfeed_footer="off"; 
+rssfeed_footer_name="Hotcoins"; 
+rssfeed_footer_bgcolor="#000"; 
+rssfeed_footer_color="#000"; 
+rssfeed_footer_bgimage=""; 
+rssfeed_item_title_length="50"; 
+rssfeed_item_title_color="#ff0000"; 
+rssfeed_item_bgcolor="#ffe3a7"; 
+rssfeed_item_bgimage=""; 
+rssfeed_item_border_bottom="on"; 
+rssfeed_item_source_icon="off"; 
+rssfeed_item_date="on"; 
+rssfeed_item_description="on"; 
+rssfeed_item_description_length="120"; 
+rssfeed_item_description_color="#000"; 
+rssfeed_item_description_link_color="#000"; 
+rssfeed_item_description_tag="on"; 
+rssfeed_no_items="0"; 
+rssfeed_cache = "f93f9aa5d64b899975004da4340d7389"; 
+
+</script> 
+
+
+<script type="text/javascript" src="//feed.surfing-waves.com/js/rss-feed.js"></script> 
+<!-- The link below helps keep this service FREE, and helps other people find the SW widget. Please be cool and keep it! Thanks. --> 
+<div style="color:#000 ;font-size:10px; text-align:center; width:600px;">powered by <a href="home.php">Hotcoins</a></div> <br><br><br>
+<!-- end sw-rss-feed code -->
 
 
 
